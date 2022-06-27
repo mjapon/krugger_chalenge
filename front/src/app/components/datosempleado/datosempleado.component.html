@@ -1,0 +1,198 @@
+<p>Informacion del Empleado</p>
+
+<div class="card">
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-md-2">
+        Cédula
+      </div>
+      <div class="col-md">
+        {{empleado.cedula}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Nombres
+      </div>
+      <div class="col-md">
+        {{empleado.nombres}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        Apellidos
+      </div>
+      <div class="col-md">
+        {{empleado.apellidos}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Correo Electronico
+      </div>
+      <div class="col-md">
+        {{empleado.email}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Fecha nacimiento
+      </div>
+      <div class="col-md">
+        {{empleado.fechaNac}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Dirección de Domicilio
+      </div>
+      <div class="col-md">
+        {{empleado.dirDomicilio}}
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-2">
+        Telefono Móvil
+      </div>
+      <div class="col-md">
+        {{empleado.celular}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        Vacunado
+      </div>
+      <div class="col-md">
+        {{empleado.vacunado?'Si':'No'}}
+      </div>
+    </div>
+
+    <div *ngIf="empleado.vacunado">
+      <div class="row">
+        <div class="col-md-2">
+          Tipo Vacuna:
+        </div>
+        <div class="col-md">
+          {{datosVacuna.tipo}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          Fecha Vacunación:
+        </div>
+        <div class="col-md">
+          {{datosVacuna.fecha}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          Num. Dosis:
+        </div>
+        <div class="col-md">
+          {{datosVacuna.ndosis}}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-2 d-flex">
+      <button class="btn btn-primary" (click)="showFormEdit()">Editar</button>
+    </div>
+
+
+    <div *ngIf="isShowForm">
+
+      <div class="row">
+        <div class="col-md-2">
+          <span>Fecha Nacimiento:</span>
+        </div>
+        <div class="col-md">
+          <p-calendar [(ngModel)]="fechaNac" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true"
+            dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <span>Dirección de domicilio:</span>
+        </div>
+        <div class="col-md">
+          <input type="text" class="form-control" [(ngModel)]="empleado.dirDomicilio">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <span>Teléfono Movil:</span>
+        </div>
+        <div class="col-md">
+          <input type="text" class="form-control" [(ngModel)]="empleado.celular">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <span>Estado Vacunación:</span>
+        </div>
+        <div class="col-md-2">
+          <select class="form-select" [(ngModel)]="empleado.vacunado">
+            <option selected>Open this select menu</option>
+            <option value="1">Si</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="empleado.vacunado">
+        <div class="row">
+          <div class="col-md-2">
+            <span>Tipo Vacuna:</span>
+          </div>
+          <div class="col-md-2">
+            <select class="form-select" [(ngModel)]="datosVacuna.tipo">
+              <option selected>Elina Uno</option>
+              <option value="1">Sputnik</option>
+              <option value="2">AstraZeneca</option>
+              <option value="3">Pfizer</option>
+              <option value="3">Jhonson&Jhonson</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">
+            <span>Fecha Vacunación:</span>
+          </div>
+          <div class="col-md">
+            <p-calendar [(ngModel)]="fechaVacuna" [showIcon]="true" [monthNavigator]="true" [yearNavigator]="true"
+              dateFormat="dd/mm/yy"></p-calendar>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">
+            <span>Num Dosis:</span>
+          </div>
+          <div class="col-md">
+            <input type="text" class="form-control" [(ngModel)]="datosVacuna.ndosis">
+          </div>
+        </div>
+        <!--modificado-->
+
+      </div>
+
+      <div class="mt-2">
+        <button class="btn btn-primary" (click)="actualizar()"> Actualizar </button>
+        <button class="btn btn-primary" (click)="cancelar()"> Cancelar </button>
+      </div>
+
+    </div>
+  </div>

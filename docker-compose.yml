@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  springapp:
+    image: 'api:latest'
+    build:
+      context: vacunas
+    container_name: springapp
+    depends_on:
+      - kruggerdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://kruggerdb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+    ports:
+      - 8080:8080
+
+  kruggerdb:
+    image: 'postgres:13.1-alpine'
+    container_name: kruggerdb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  front:
+     build:
+       context: front
+     container_name: angularpp
+     depends_on:
+       - springapp
+     ports:
+       - 4200:4200 
+
+    
