@@ -15,10 +15,13 @@ API de la aplicación se despliega en la ruta:
 http://localhost:8080/vacunas/api/v1.0
 
 Para construir la aplicación se debe compilar las fuentes del back
+
 cd vacunas
+
 mvn clean package
 
-Luego se debe levantar el contenedor configurado que se encuentra en la carpeta raiz, para ello ejecutar
+Luego se debe levantar el contenedor configurado que se encuentra en la carpeta raiz, para ello ejecutar:
+
 docker-compose up
 
 
